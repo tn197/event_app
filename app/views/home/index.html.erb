@@ -3,7 +3,7 @@
   
   <% if user_signed_in? %>
     <p><%= current_user.email %>さん、ようこそ！</p>
-    <%= link_to "マイページ", '#', class: "btn btn-lg btn-primary" %>
+    <%= link_to "イベント一覧", events_path, class: "btn btn-lg btn-primary" %>
   <% else %>
   　<h2>イベントを企画しよう！</h2>
     <p>ログインまたは新規登録をしてください。</p>

@@ -1,0 +1,20 @@
+<div>
+  <div class="col-md-6 col-md-offset-3">
+  
+    <%= form_for @event do |f| %>
+      <%= render 'layouts/error_messages' %>
+    
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
+      
+    　<%= f.label :content %>
+      <%= f.text_area :content, class: 'form-control' %>
+      
+      <%= f.label :target_at %>
+      <p><%= f.date_field :target_at, class: 'form-control' %></p>      
+      
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <% end %>
+    
+  </div>
+</div>

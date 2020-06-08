@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Event.create!(
+    user_id: 1,
+    title: 'Test1',
+    content: 'ああああああああああああああああああああああああああああああ',
+    target_at: 20200620
+)
