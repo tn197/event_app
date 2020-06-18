@@ -21,7 +21,7 @@ class EventsController < ApplicationController
       flash[:success] = "成功！"
       redirect_to @event
     else
-      render 'new'
+      render :new
     end
   end
   
@@ -35,7 +35,7 @@ class EventsController < ApplicationController
       flash[:success] = "更新！"
       redirect_to @event
     else
-      render 'edit'
+      render :edit
     end
   end
   
