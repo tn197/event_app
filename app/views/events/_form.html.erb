@@ -11,7 +11,7 @@
       <%= f.text_area :content, class: 'form-control' %>
       
       <%= f.label :target_at %>
-      <p><%= f.date_field :target_at, class: 'form-control' %></p>      
+      <p><%= f.date_select :target_at, class: 'form-control' %></p> 
       
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
     <% end %>
