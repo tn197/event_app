@@ -1,18 +1,18 @@
 <h1>events/show</h1>
 
-URL: 
-<%= link_to "出欠ページへ", '#', 
-class: "btn btn-outline-secondary btn-sm" %>
+<div class="event-card">
+  <p>URL: <%= link_to "出欠ページへ", '#', 
+     class: "btn btn-outline-secondary btn-sm" %></p>
 
-<div class="card">
-  <div class="card-header">
-    開催日：<%= @event.target_at %>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title"><%= @event.title %></h5>
-    
-    <p class="card-text"><%= @event.content %></p>
-    <%= link_to "イベント一覧", events_path, class: "btn btn-outline-secondary btn-sm" %>
-    <%= link_to "編集", edit_event_path(@event.id), class: "btn btn-outline-secondary btn-sm" %>
+  <div class="card">
+    <div class="card-header">
+      開催日：<%= @event.target_at %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= @event.title %></h5>
+      <p class="card-text"><%= @event.content %></p>
+      <%= link_to "イベント一覧", events_path, class: "btn btn-outline-secondary btn-sm" %>
+      <%= link_to "編集", edit_event_path(@event.id), class: "btn btn-outline-secondary btn-sm" %>
+    </div>
   </div>
 </div>
