@@ -20,7 +20,7 @@ class SharedEventsController < ApplicationController
 
     private
         def set_shared_event
-            @shared_event = Event.find_by!(params[:uuid])
+            @shared_event = Event.find_by!(uuid: params[:uuid])
         end
         
         def shared_event_params

@@ -1,5 +1,6 @@
-<h1>index</h1>
+<h1>イベント一覧</h1>
 <div class="event-index">
+<%= link_to "新しいイベントを企画する", new_event_path, class: "btn-outline-secondary new" %>
 <% @events.each do |event| %>
     
 <div class="card event-card">

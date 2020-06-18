@@ -1,8 +1,7 @@
 <h1>events/show</h1>
-
-URL: 
-<%= link_to "出欠ページへ", '#', 
-class: "btn btn-outline-secondary btn-sm" %>
+<div class="event-index">
+<p>URL: <%= link_to "出欠ページへ", '#', 
+class: "btn btn-outline-secondary btn-sm " %></p>
 
 <div class="card">
   <div class="card-header">
@@ -15,4 +14,5 @@ class: "btn btn-outline-secondary btn-sm" %>
     <%= link_to "イベント一覧", events_path, class: "btn btn-outline-secondary btn-sm" %>
     <%= link_to "編集", edit_event_path(@event.id), class: "btn btn-outline-secondary btn-sm" %>
   </div>
+</div>
 </div>
