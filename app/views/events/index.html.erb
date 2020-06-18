@@ -1,23 +1,22 @@
 <h1>イベント一覧</h1>
-<div class="event-index">
-<%= link_to "新しいイベントを企画する", new_event_path, class: "btn-outline-secondary new" %>
-<% @events.each do |event| %>
-    
-<div class="card event-card">
-  <div class="card-header">
-    <%= event.target_at %>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title"><%= event.title %></h5>
-    
-    <p class="card-text"><%= event.content %></p>
-    <%= link_to "SHOW", event, class: "btn btn-outline-secondary btn-sm" %>
-    <%= link_to "編集", edit_event_path(event.id), class: "btn btn-outline-secondary btn-sm" %>
-    <%= link_to '削除', event, class: "btn btn-outline-secondary btn-sm", method: :delete,
-                                     data: { confirm: 'Are you sure?' } %>
-  </div>
-</div>
 
+<div class="event-card">
+  <%= link_to "新しいイベントを企画する", new_event_path, class: "btn-outline-secondary new" %>
+
+<% @events.each do |event| %>
+  <div class="card event-index">
+    <div class="card-header">
+      <%= event.target_at %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= event.title %></h5>
+      <p class="card-text"><%= event.content %></p>
+      <%= link_to "SHOW", event, class: "btn btn-outline-secondary btn-sm" %>
+      <%= link_to "編集", edit_event_path(event.id), class: "btn btn-outline-secondary btn-sm" %>
+      <%= link_to '削除', event, class: "btn btn-outline-secondary btn-sm", method: :delete,
+                                     data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
 <% end %>
-<%= link_to "新しいイベントを企画する", new_event_path, class: "btn-outline-secondary" %>
+  <%= link_to "新しいイベントを企画する", new_event_path, class: "btn-outline-secondary" %>
 </div>

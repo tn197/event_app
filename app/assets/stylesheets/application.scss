@@ -67,6 +67,21 @@ p {
 
 /* header */
 
+.header__list {
+  list-style: none;
+  margin: 0;
+  display: flex;
+}
+
+.header__list-item {
+  margin-left: 15px;
+  font-size: 14px;
+}
+
+.header__navigation {
+  margin-left: auto;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -81,21 +96,4 @@ p {
     color: white;
     text-decoration: none;
   }
-}
-
-.card{
-  width: 75%;
-}
-
-
-
-.event-card {
-  
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.event-index{
-  margin-left: 250px;
-  margin-bottom: 60px;
 }
