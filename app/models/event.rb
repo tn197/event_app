@@ -1,9 +1,11 @@
 class Event < ApplicationRecord
 　has_secure_token :uuid
-    
-　has_many :event_schedule
+  
+  has_many :guest, through: :events_guest
+  has_many :events_guest
+　has_many :event_schedule, dependent: :destroy
 　belongs_to :user
     
 　validates :title, presence: true  
-　# 他
+　validates :content, presence: true
 end
