@@ -7,6 +7,8 @@ ruby '2.6.3'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # ログイン機能
 gem 'devise'
+# emailのバリデーション
+gem 'email_validator'
 # bootstrap
 gem 'bootstrap'
 # Use sqlite3 as the database for Active Record
