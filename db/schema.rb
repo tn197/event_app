@@ -10,44 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_023810) do
+ActiveRecord::Schema.define(version: 2020_06_29_002518) do
 
   create_table "event_schedules", force: :cascade do |t|
-    t.integer "event_id"
-    t.datetime "targer_at"
+    t.integer "event_id", null: false
+    t.datetime "targer_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "events", force: :cascade do |t|
     t.text "uuid"
-    t.string "title"
-    t.text "content"
+    t.string "title", null: false
+    t.text "content", null: false
     t.datetime "target_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
   end
 
   create_table "events_guests", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "guest_id"
+    t.integer "event_id", null: false
+    t.integer "guest_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "guests", force: :cascade do |t|
-    t.string "name"
-    t.text "comment"
-    t.string "email"
+    t.string "name", null: false
+    t.text "comment", null: false
+    t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "browser_uuid"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "guest_id"
-    t.text "content"
+    t.integer "user_id", null: false
+    t.integer "guest_id", null: false
+    t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

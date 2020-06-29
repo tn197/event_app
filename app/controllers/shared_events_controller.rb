@@ -1,7 +1,11 @@
 class SharedEventsController < ApplicationController
   before_action :set_shared_event, only: [:show, :edit, :update]
+  before_action :set_guest
     
   def show
+    if !@guest.present? && !user_signed_in?
+      redirect_to new_guest_path
+    end
   end
     
   def edit 
@@ -21,6 +25,10 @@ class SharedEventsController < ApplicationController
   private
     def set_shared_event
       @shared_event = Event.find_by!(uuid: params[:uuid])
+    end
+    
+    def set_guest
+      @guest = Guest.find_by(brouser_uuid: session[:brouser_uuid]) unless user_signed_in?
     end
         
     def shared_event_params

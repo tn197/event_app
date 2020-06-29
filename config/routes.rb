@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   resources:events
   resources :shared_events, only: [:edit, :show, :update],  param: :uuid
   get 'shared_events/attrndance'
+  
+  resources :events do
+  get 'guests/new'
+  get 'guests/create'
+  end
 end
