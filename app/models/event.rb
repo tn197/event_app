@@ -12,7 +12,6 @@ class Event < ApplicationRecord
 　validates :content, presence: true
 
   def set_uuid
-    aaaa
     uuid = SecureRandom.uuid #has_secure_tokenが動かないため
   end
 
