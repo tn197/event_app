@@ -15,7 +15,7 @@ class SharedEventsController < ApplicationController
   end
     
   def update
-    if @shared_ivent.update(event_params)
+    if @shared_event.update(event_params)
       redirect_to @shared_event
     else
       render :edit

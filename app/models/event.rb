@@ -1,18 +1,12 @@
 class Event < ApplicationRecord
-　has_secure_token :uuid
-　
-　before_validation :set_uuid 
-  
-  has_many :guest, through: :events_guest
-  has_many :events_guest
-　has_many :event_schedule, dependent: :destroy
-　belongs_to :user
-    
-　validates :title, presence: true  
-　validates :content, presence: true
+  has_secure_token :uuid
 
-  def set_uuid
-    uuid = SecureRandom.uuid #has_secure_tokenが動かないため
-  end
+  has_many :guests, through: :events_guest
+  has_many :events_guests
+  has_many :event_schedules, dependent: :destroy
+  accepts_nested_attributes_for :event_schedules, allow_destroy: true
+  belongs_to :user
 
+  validates :title, presence: true  
+  validates :content, presence: true
 end

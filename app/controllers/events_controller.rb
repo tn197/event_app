@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   
   def new
     @event = current_user.events.build
+    @event_schedule = @event.event_schedules.build
   end
   
   def show
@@ -47,6 +48,6 @@ class EventsController < ApplicationController
     end
     
     def event_params
-      params.require(:event).permit(:title, :content, :target_at)
+      params.require(:event).permit(:title, :content, :target_at,event_schedules: [:id, :target_at, :_destroy])
     end
 end

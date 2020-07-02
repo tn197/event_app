@@ -4,14 +4,16 @@
     <%= form_for @event do |f| %>
       <%= render 'layouts/error_messages' %>
     
-      <%= f.label :title %>
+      <%= f.label "タイトル" %>
       <%= f.text_field :title, class: 'form-control' %>
       
-    　<%= f.label :content %>
+    　<%= f.label "内容" %>
       <%= f.text_area :content, class: 'form-control' %>
       
-      <%= f.label :target_at %>
-      <p><%= f.date_select :target_at, class: 'form-control' %></p> 
+      <%= f.fields_for :event_schedules do |s| %>
+        <%= s.label "予定日" %>
+        <%= s.date_select :targer_at %>
+      <%end%>
       
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
     <% end %>
