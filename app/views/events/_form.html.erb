@@ -10,10 +10,13 @@
     　<%= f.label "内容" %>
       <%= f.text_area :content, class: 'form-control' %>
       
-      <%= f.fields_for :event_schedules do |s| %>
-        <%= s.label "予定日" %>
-        <%= s.date_select :targer_at %>
+      <%= f.fields_for :event_schedules do |event_schedule| %>
+        <%= render "event_schedule_fields", f: event_schedule %>
       <%end%>
+      
+      <div id="links">
+        <%= link_to_add_association "追加", f, :event_schedules %>
+      </div>
       
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
     <% end %>

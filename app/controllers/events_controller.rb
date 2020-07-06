@@ -48,6 +48,6 @@ class EventsController < ApplicationController
     end
     
     def event_params
-      params.require(:event).permit(:title, :content, :target_at,event_schedules: [:id, :target_at, :_destroy])
+      params.require(:event).permit(:title, :content, :target_at, event_schedules_attributes: [:id, :targer_at, :_destroy])
     end
 end
