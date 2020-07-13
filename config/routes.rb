@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'home/index'
   resources:events
   resources :shared_events, only: [:edit, :show, :update],  param: :uuid
-  get 'shared_events/attrndance'
+  get 'shared_events/attendance', param: :uuid
   
   # /events/1/guests/new
   # params[:event_id]

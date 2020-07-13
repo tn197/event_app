@@ -1,19 +1,31 @@
 <h1>events/show</h1>
 
-<!--消す-->
-<%= @event.uuid %>
-
 <div class="event-card">
-  <p>URL: <%= link_to "出欠ページへ", '', 
+  <p>URL: <%= link_to  shared_event_url(@event.uuid),
      class: "btn btn-outline-secondary btn-sm" %></p>
 
   <div class="card">
     <div class="card-header">
-      開催日：<%= @event.target_at %>
+      <h4><%= @event.title %></h4>
     </div>
+    
     <div class="card-body">
-      <h5 class="card-title"><%= @event.title %></h5>
+      <% if @event.target_at.nil? %>
+        <p>開催日：未定</p>
+      <% else %>
+        <p>開催日：<%= @event.target_at %></p>
+      <% end %>
       <p class="card-text"><%= @event.content %></p>
+      
+      <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">開催予定日</li>
+          <% @event_schedules.each do |e| %>
+            <li class="list-group-item"><%= e.targer_at %></li>
+          <% end %>
+        </ul>
+      </div>
+      
       <%= link_to "イベント一覧", events_path, class: "btn btn-outline-secondary btn-sm" %>
       <%= link_to "編集", edit_event_path(@event.id), class: "btn btn-outline-secondary btn-sm" %>
     </div>

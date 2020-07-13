@@ -4,11 +4,12 @@ class SharedEventsController < ApplicationController
     
   def show
     if !@guest.present? && !user_signed_in?
-      redirect_to new_guest_path
+      redirect_to new_event_guest_path(@shared_event.id)
     end
+    @event_schedules = @shared_event.event_schedules
   end
     
-  def edit 
+  def edit
   end
     
   def attendance
@@ -28,7 +29,7 @@ class SharedEventsController < ApplicationController
     end
     
     def set_guest
-      @guest = Guest.find_by(brouser_uuid: session[:brouser_uuid]) unless user_signed_in?
+      @guest = Guest.find_by(browser_uuid: session[:browser_uuid]) unless user_signed_in?
     end
         
     def shared_event_params

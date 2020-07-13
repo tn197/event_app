@@ -1,0 +1,113 @@
+<h1><%= current_user.email %>さんのタスク</h1>
+
+<div id="search">
+  <%= search_form_for @search do |f| %>
+    <p>
+      <%= f.label :title_or_content_cont,"タイトル、内容から検索:  " %>
+      <%= f.search_field :title_or_content_cont %>
+      <%= f.submit "検索", class: "actions"  %>
+    </p>
+  <% end %>
+    
+  <%= search_form_for @search do |f| %>
+    <p>
+      <%= f.label :deadline_at_lteq ,"期限が〇〇までのタスク:  " %>
+      <%= f.date_select :deadline_at_lteq %>
+      <%= f.submit "検索", class: "actions" %>
+    </p>
+  <% end %>
+
+    
+  <% if @tasks.any? %>
+
+<h2>検索結果タスク</h2>
+<table class="table table-striped ">
+  <thead>
+    <tr>
+      <th scope="col">タイトル</th>
+      <th scope="col">期限</th>
+      <th scope="col">内容</th>
+      <th scope="col">進行状況</th>
+      <th scope="col">
+        <%= form_tag(tasks_path, method: :get) do %>
+			 		<%= select_tag :priority, options_for_select({low: 0, middle: 1, high: 2}), id: 'priority', prompt: '優先順位' %>
+					<%= submit_tag 'sort' %>
+				<% end %>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= link_to task.title, task, class: "btn-outline-secondary" %></td>
+        <td><%= task.deadline_at.strftime('%Y/%m/%d') %></td>
+        <td><%= task.content %></td>
+        <td>
+          
+          <%= form_tag(tasks_path, method: :get) do %>
+					  <%= select_tag :status, options_for_select({waiting: 0, working: 1, done: 2}), 
+					                 id: 'status', prompt: task.status %>
+				  <% end %>
+				</td>
+				<td>
+				  <%= select_tag :priority, options_for_select({low: 0, middle: 1, high: 2}),
+				                  id: 'deadline', prompt: task.priority %>
+				</td>
+        <td><%= link_to '編集', edit_task_path(task.id), class: "btn-outline-secondary" %></td>
+        <td><%= link_to '削除', task, class: "btn-outline-secondary", method: :delete,
+                                     data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @tasks %>
+
+  <% else%>
+    <p class="not-result">その検索では見つかりませんでした。</p>
+    
+    <h2>タスク一覧</h2>
+      <table class="table table-striped ">
+  <thead>
+    <tr>
+      <th scope="col">タイトル</th>
+      <th scope="col">期限</th>
+      <th scope="col">内容</th>
+      <th scope="col">進行状況</th>
+      <th scope="col">
+        <%= form_tag(tasks_path, method: :get) do %>
+			 		<%= select_tag :priority, options_for_select({low: 0, middle: 1, high: 2}), id: 'priority', prompt: '優先順位' %>
+					<%= submit_tag '優先順位ソート' %>
+				<% end %>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= link_to task.title, task, class: "btn-outline-secondary" %></td>
+        <td><%= task.deadline_at.strftime('%Y/%m/%d') %></td>
+        <td><%= task.content %></td>
+        <td>
+          
+          <%= form_tag(tasks_path, method: :get) do %>
+					  <%= select_tag :status, options_for_select({waiting: 0, working: 1, done: 2}), 
+					                 id: 'status', prompt: task.status %>
+				  <% end %>
+				</td>
+				<td>
+				  <%= select_tag :priority, options_for_select({low: 0, middle: 1, high: 2}),
+				                  id: 'deadline', prompt: task.priority %>
+				</td>
+        <td><%= link_to '編集', edit_task_path(task.id), class: "btn-outline-secondary" %></td>
+        <td><%= link_to '削除', task, class: "btn-outline-secondary", method: :delete,
+                                     data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  <% end %>
+  <%= link_to "新しいタスクを追加する", new_task_path, class: "btn-outline-secondary" %>
+
+</div>

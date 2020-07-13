@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   end
   
   def show
+    @event_schedules = @event.event_schedules
   end
   
   def edit

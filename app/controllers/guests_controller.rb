@@ -7,10 +7,10 @@ class GuestsController < ApplicationController
   def create
     @guest = Guest.new(guest_params)
     browser_uuid = SecureRandom.uuid
-    session[:brousew_uuid] = browser_uuid
-    @guest.browser_uuid = brouser_uuid
+    session[:browser_uuid] = browser_uuid
+    @guest.browser_uuid = browser_uuid
     if @guest.save
-      redirect_to @event
+      redirect_to shared_event_path(@event.uuid)
     else
       render :new
     end
