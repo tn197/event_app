@@ -12,9 +12,6 @@ class SharedEventsController < ApplicationController
   def edit
   end
     
-  def attendance
-  end
-    
   def update
     if @shared_event.update(event_params)
       redirect_to @shared_event
