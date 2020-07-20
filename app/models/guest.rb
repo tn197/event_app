@@ -4,5 +4,5 @@ class Guest < ApplicationRecord
   has_many :post, dependent: :destroy
   
   validates :name, presence: true 
-  validates :email, email: { allow_blank: true }
+  validates :email, email: true
 end
