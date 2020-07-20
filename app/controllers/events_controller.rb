@@ -7,9 +7,11 @@ class EventsController < ApplicationController
   
   def new
     @event = current_user.events.build
+    @event_schedule = @event.event_schedules.build
   end
   
   def show
+    @event_schedules = @event.event_schedules
   end
   
   def edit
@@ -44,9 +46,9 @@ class EventsController < ApplicationController
   
     def set_event
       @event = current_user.events.find(params[:id])
-    end  
+    end
     
     def event_params
-      params.require(:event).permit(:title, :content, :target_at)
+      params.require(:event).permit(:title, :content, :target_at, event_schedules_attributes: [:id, :targer_at, :_destroy])
     end
 end
