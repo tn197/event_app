@@ -1,9 +1,9 @@
 class CreateEvents < ActiveRecord::Migration[6.0]
   def change
     create_table :events do |t|
-      t.text :uuid
+      t.text :uuid, null: false
       t.string :title, null: false
-      t.text :content, null: false
+      t.text :content
       t.datetime :target_at
 
       t.timestamps

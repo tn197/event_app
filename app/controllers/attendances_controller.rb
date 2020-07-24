@@ -3,12 +3,12 @@ class AttendancesController < ApplicationController
   before_action :set_guest
   
   def new
-    @attendance = Attendance.new
-    @event_schedules = @event.event_schedules
+    @attendance = @guest.attendance.build
+    @event_schedules = @event.event_schedules.order
   end
   
   def create
-    @attendance = Attendance.new(attendance_params)
+    @attendance = @guest.attendance.build(attendance_params)
     if @attendance.save
       redirect_to shared_event_path(@event.uuid)
     else

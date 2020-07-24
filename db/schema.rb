@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 2020_07_20_021829) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.text "uuid"
+    t.text "uuid", null: false
     t.string "title", null: false
-    t.text "content", null: false
+    t.text "content"
     t.datetime "target_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2020_07_20_021829) do
 
   create_table "guests", force: :cascade do |t|
     t.string "name", null: false
-    t.text "comment"
     t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
