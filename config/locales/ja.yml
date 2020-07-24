@@ -1,0 +1,7 @@
+ja:
+  enumerize:
+    attendance:
+      entry:
+        ok: '〇'
+        neutral: '△'
+        ng: '×'

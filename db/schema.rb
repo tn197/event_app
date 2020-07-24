@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_29_002518) do
+ActiveRecord::Schema.define(version: 2020_07_20_021829) do
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "guest_id"
+    t.integer "event_id"
+    t.string "entry"
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "event_schedules", force: :cascade do |t|
     t.integer "event_id", null: false
@@ -20,9 +30,9 @@ ActiveRecord::Schema.define(version: 2020_06_29_002518) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.text "uuid"
+    t.text "uuid", null: false
     t.string "title", null: false
-    t.text "content", null: false
+    t.text "content"
     t.datetime "target_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -38,7 +48,6 @@ ActiveRecord::Schema.define(version: 2020_06_29_002518) do
 
   create_table "guests", force: :cascade do |t|
     t.string "name", null: false
-    t.text "comment", null: false
     t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -46,9 +55,9 @@ ActiveRecord::Schema.define(version: 2020_06_29_002518) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "guest_id", null: false
-    t.text "content", null: false
+    t.integer "user_id"
+    t.integer "guest_id"
+    t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -6,6 +6,7 @@ class User < ApplicationRecord
          
   has_many :events, dependent: :destroy
   has_many :post,   dependent: :destroy
+  has_many :attendances, dependent: :destroy
   
   validates :name, presence: true  
 end

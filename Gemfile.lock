@@ -90,6 +90,8 @@ GEM
       warden (~> 1.2.3)
     email_validator (2.0.1)
       activemodel
+    enumerize (2.3.1)
+      activesupport (>= 3.2)
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.13.0)
@@ -233,6 +235,7 @@ DEPENDENCIES
   cocoon
   devise
   email_validator
+  enumerize
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)
